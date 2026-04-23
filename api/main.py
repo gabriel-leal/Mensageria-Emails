@@ -105,7 +105,8 @@ gerando falsos positivos.
     contact={
         "name": "Menezes Digital",
         "url": "https://menezesdigital.com.br",
-    }
+    },
+    lifespan=lifespan
 )
 
 app.add_middleware(
