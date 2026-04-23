@@ -121,7 +121,6 @@ async def send_email(email: Email_send, db: Session = Depends(get_db), request: 
             )
         logger.info(f"E-mail enviado para a fila: {message}")
         redis = request.app.state.redis
-        redis = request.app.state.redis
         cached = await redis.get(f"email_status:{email_id}")
         if cached:
             await redis.delete(f"email_status:{email_id}")
