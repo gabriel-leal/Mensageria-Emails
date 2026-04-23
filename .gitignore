@@ -1,0 +1,7 @@
+.env
+*.pyc
+teste.html
+teste_email.py
+api/app.log
+app/app.log
+/api/core/images
