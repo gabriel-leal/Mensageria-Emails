@@ -64,10 +64,14 @@ def callback(ch, method, properties, body):
         envia_email(email, from_address, to_address, subject, password, parameters, logo, email_id)
         db.query(Email).filter(Email.id == email_id).update({Email.status: EmailStatus.sent})
         db.query(Email).filter(Email.id == email_id).update({Email.sent_at: text('CURRENT_TIMESTAMP')})
+        db.query(Email).filter(Email.id == email_id).update({Email.updated_at: text('CURRENT_TIMESTAMP')})
         db.commit()
         logger.info(f"Email sent to {to_address}")
+        channel.basic_ack(delivery_tag=method.delivery_tag)
+        
     except Exception as e:
         logger.error(f"Error sending email to {to_address}: {e}")
+        channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
 
 credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASSWORD)
 parameters = pika.ConnectionParameters(RABBITMQ_HOST, 5672, '/', credentials)
@@ -75,7 +79,7 @@ connection_rabbit = pika.BlockingConnection(parameters)
 channel = connection_rabbit.channel()
 
 channel.queue_declare(queue='email')
-channel.basic_consume(queue='email', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='email', on_message_callback=callback, auto_ack=False)
 print('Waiting for messages.... To exit press CTRL+C')
 channel.start_consuming()
 
