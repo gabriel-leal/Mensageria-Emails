@@ -1,4 +1,6 @@
 import time
+
+from sqlalchemy import text
 from db.models.email import Email
 from schemas.v2.Email import EmailStatus
 from core.rabbit_connection import RabbitMQClient
@@ -16,7 +18,8 @@ async def publish_with_retry(message, db, email_id):
                 rabbit.publish(message)
 
             db.query(Email).filter(Email.id == email_id).update({
-                "status": EmailStatus.queued.value
+                "status": EmailStatus.queued.value,
+                "updated_at": text('CURRENT_TIMESTAMP')
             })
             db.commit()
 
