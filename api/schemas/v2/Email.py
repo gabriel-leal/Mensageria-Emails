@@ -12,7 +12,7 @@ class EmailTemplate(str, Enum):
     welcome = "welcome"
     default = "default"
     sette = "sette"
-    bub-welcome = "bub-welcome"
+    bub_welcome = "bub-welcome"
     
 class EmailStatus(str, Enum):
     queued = "queued"
