@@ -317,6 +317,74 @@ def envia_email(email: str, from_address: str, to_address: str, subject: str, pa
                 </html>
             """
 
+        elif parameters == "bub-welcome":
+            bub_footer_html = f"""
+            <footer style="margin-top:0;text-align:center;font-size:12px;line-height:1.5;color:#64748b;font-family:Arial,sans-serif;">
+                Esta é uma mensagem automática — não responda a este e-mail.<br/>
+                &copy; {current_year} BUB · Build Up Better · BubApp Soluction LTDA<br/>
+                <img src="https://apimensageria.menezesdigital.com.br/v2/update-status/{email_id}?Status=visualized&Token={TOKEN}" width="1" height="1" style="display:none;" />
+            </footer>
+            """
+
+            html_content = f"""
+                <!DOCTYPE html>
+                <html lang="pt-br">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body style="margin:0;padding:0;background-color:#f8fafc;font-family:Arial,sans-serif;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f8fafc;padding:40px 10px;">
+                        <tr>
+                            <td align="center">
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;background-color:#ffffff;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,0.10);overflow:hidden;">
+                                    <tr>
+                                        <td align="center" style="background-color:#0052ff;padding:30px 24px;">
+                                            <img src="https://bubapp.com.br/assets/bub-mark-BVbjlqOD.png" alt="BUB Logo" width="86" style="display:block;border:0;outline:none;text-decoration:none;margin:0 auto 14px auto;">
+                                            <div style="color:#ffffff;font-size:28px;font-weight:bold;line-height:1;font-family:Arial,sans-serif;letter-spacing:0;">BUB</div>
+                                            <div style="color:#dbeafe;font-size:13px;line-height:1.4;margin-top:8px;font-family:Arial,sans-serif;">Build Up Better</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding:38px 30px 34px;text-align:left;">
+                                            <p style="color:#ff6d00;font-size:12px;line-height:1.4;margin:0 0 12px 0;font-weight:bold;text-transform:uppercase;font-family:Arial,sans-serif;">
+                                                Pré-lançamento confirmado
+                                            </p>
+                                            <h2 style="color:#0f172a;font-size:24px;line-height:1.25;margin:0 0 18px 0;font-weight:bold;font-family:Arial,sans-serif;">
+                                                Cadastro recebido com sucesso
+                                            </h2>
+
+                                            <p style="color:#334155;font-size:15px;line-height:1.6;margin:0 0 15px 0;font-family:Arial,sans-serif;">
+                                                Obrigado por se cadastrar para acompanhar o pré-lançamento do BUB, o app que conecta pessoas, profissionais e obras em uma experiência simples, segura e inteligente.
+                                            </p>
+                                            <p style="color:#334155;font-size:15px;line-height:1.6;margin:0 0 24px 0;font-family:Arial,sans-serif;">
+                                                Assim que as novidades estiverem prontas, você será um dos primeiros a receber as atualizações.
+                                            </p>
+
+                                            <div style="border-top:1px solid #e2e8f0;padding-top:22px;">
+                                                <p style="color:#64748b;font-size:13px;line-height:1.5;margin:0;font-family:Arial,sans-serif;">
+                                                    Você recebeu este e-mail porque demonstrou interesse no pré-lançamento do BUB.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;margin-top:20px;">
+                                    <tr>
+                                        <td align="center" style="font-family:Arial,sans-serif;">
+                                            {bub_footer_html}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>
+            """
+
         else:
             html_content = f"""
                 <html>
