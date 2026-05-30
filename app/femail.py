@@ -356,7 +356,7 @@ def envia_email(email: str, from_address: str, to_address: str, subject: str, pa
                                             </h2>
 
                                             <p style="color:#334155;font-size:15px;line-height:1.6;margin:0 0 15px 0;font-family:Arial,sans-serif;">
-                                                Obrigado por se cadastrar para acompanhar o pré-lançamento do BUB, o app que conecta pessoas, profissionais e obras em uma experiência simples, segura e inteligente.
+                                                Obrigado {email} por se cadastrar para acompanhar o pré-lançamento do BUB, o app que conecta pessoas, profissionais e obras em uma experiência simples, segura e inteligente.
                                             </p>
                                             <p style="color:#334155;font-size:15px;line-height:1.6;margin:0 0 24px 0;font-family:Arial,sans-serif;">
                                                 Assim que as novidades estiverem prontas, você será um dos primeiros a receber as atualizações.
