@@ -13,6 +13,7 @@ class EmailTemplate(str, Enum):
     default = "default"
     sette = "sette"
     bub_welcome = "bub-welcome"
+    bub = "bub"
     
 class EmailStatus(str, Enum):
     queued = "queued"
